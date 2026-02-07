@@ -5,25 +5,69 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Louis Delloye - About Me</title>
+  <title>Louis Delloye - About</title>
   <meta name="description"
     content="Hello there, I'm Louis Delloye - a Paris-based photographer with a PhD in optics who loves to capture the city’s architecture, people, and landscapes with bold colors, contrasts, and geometric twists.">
+
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="./assets/favicon.svg" />
+
+  <!-- Tailwind output -->
   <link rel="stylesheet" href="output.css" />
-  <link rel="stylesheet" href="styles.css" />
+
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <!-- Start - Fonts -->
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap" rel="stylesheet">
-  <!-- End - Fonts -->
+
+  <style>
+    /* Fallback fade-in */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    /* Bilingual section: force 1 col on mobile, 2 cols from md up (no Tailwind dependency) */
+    .bilingual-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3.5rem; /* leaner than before but airy */
+      margin-top: 2.75rem;
+    }
+    @media (min-width: 768px) {
+      .bilingual-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
+    }
+
+    /* Make bilingual headers feel lighter */
+    .statement-title {
+      font-family: Signika, sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-align: center;
+      margin-bottom: 0.25rem;
+    }
+    .statement-subtitle {
+      font-family: Signika, sans-serif;
+      font-style: italic;
+      text-align: center;
+      opacity: 0.8;
+      margin-bottom: 1.75rem;
+    }
+  </style>
 </head>
 
-<body
-  class="dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
+<body class="dark:bg-black bg-white min-h-screen text-black dark:text-white px-5 md:px-20 animate-fade-in transition duration-500">
+
   <!-- Navbar -->
   <header class="flex w-full overflow-hidden pt-10 pb-1">
     <nav id="nav" x-data="{ open: false }" role="navigation" class="w-full">
@@ -31,87 +75,133 @@
         <div class="mr-4 md:mr-8">
           <a href="index.html" class="text-2xl font-signika font-bold">Louis Delloye</a>
         </div>
+
         <div class="ml-auto md:hidden flex items-center justify-start">
           <button onclick="menuToggle()" @click="open = !open"
-            class="tap-highlight-transparent text-black dark:text-white w-5 h-5 relative focus:outline-none"
-            @click="open = !open">
+            class="tap-highlight-transparent text-black dark:text-white w-5 h-5 relative focus:outline-none">
             <span class="sr-only">Open main menu</span>
             <div class="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
               <span aria-hidden="true"
                 class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
                 :class="{'rotate-45': open,' -translate-y-1.5': !open }"></span>
               <span aria-hidden="true"
-                class="block absolute  h-0.5 w-5 bg-current   transform transition duration-500 ease-in-out"
+                class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
                 :class="{'opacity-0': open } "></span>
               <span aria-hidden="true"
-                class="block absolute  h-0.5 w-5 bg-current transform  transition duration-500 ease-in-out"
+                class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
                 :class="{'-rotate-45': open, ' translate-y-1.5': !open}"></span>
             </div>
           </button>
         </div>
+
         <div id="menu"
           class="w-full h-0 transition-all ease-out duration-500 md:transition-none md:w-auto md:flex-grow md:flex md:items-center">
           <ul id="ulMenu"
             class="flex flex-col duration-300 ease-out md:space-x-5 sm:transition-none mt-5 md:flex-row md:items-center md:ml-auto md:mt-0 md:pt-0 md:border-0">
             <li class="group transition duration-300">
               <a href="index.html" class="font-signika text-2xl">PORTFOLIO
-                <span
-                  class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white">
-                </span>
+                <span class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
               </a>
             </li>
             <li class="group transition duration-300">
-              <a href="about_me.html" class="font-signika text-2xl">ABOUT ME
+              <a href="https://louisdelloye.github.io/art-gallery/build" class="font-signika text-2xl">3D EXHIBITION
+                <span class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+              </a>
+            </li>
+            <li class="group transition duration-300">
+              <a href="about_me.html" class="font-signika text-2xl">ABOUT
                 <span class="hidden md:block h-0.5 bg-black dark:bg-white"></span>
               </a>
             </li>
-            <!-- <li class="group transition duration-300">
-              <a href="contact.html" class="font-signika text-2xl">CONTACT
-                <span
-                  class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white">
-                </span>
-              </a>
-            </li> -->
           </ul>
         </div>
       </div>
     </nav>
   </header>
+
   <!-- Content -->
   <div class="container mx-auto">
-    <h1 class="text-4xl pt-10 pb-8"><b>ABOUT ME</b></h1>
-    <div class="grid grid-cols-2 gap-14 md:gap-20">
-      <div class="col-span-2 md:col-span-1">
+    <h1 class="text-4xl pt-10 pb-8"><b>ABOUT</b></h1>
+
+    <!-- Top section: 1/4 image, 3/4 text on desktop -->
+    <!-- <div class="grid grid-cols-2 gap-14 md:gap-20">
+      <div class="col-span-2 md:col-span-1 flex justify-center">
         <div
-          class="bg-white dark:bg-neutral-900 p-5 pb-28 m-6 md:m-12 shadow-lg border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 -rotate-6 relative">
-          <img src="./assets/Avatar.png" alt=""
-            class="smooth-edges flex flex-col w-full aspect-square object-cover h-auto" />
+          class="bg-white dark:bg-neutral-900 p-4 pb-20 m-6 md:m-8 shadow-lg border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 -rotate-6 relative w-full max-w-xs">
+          <img src="./assets/Avatar.jpeg" alt="Portrait of Louis"
+            class="smooth-edges w-full aspect-square object-cover h-auto" />
           <div class="absolute bottom-0 left-0 right-0 text-center">
-            <p class="text-gray-800 dark:text-slate-200 pb-7 h-full text-6xl font-nothingyoucoulddo">me</p>
+            <p class="text-gray-800 dark:text-slate-200 pb-6 h-full text-5xl font-nothingyoucoulddo">me</p>
+          </div>
+        </div>
+      </div>
+
+      <section class="font-normal text-center text-base md:text-start mx-3 col-span-2 md:col-span-1 my-auto"
+        style="grid-column: span 2 / span 2;">
+        <div class="md:flex md:items-center">
+          <div class="md:flex-grow">
+            <div class="block md:hidden">
+              <p class="text-3xl font-serif font-bold mb-1">Hello there,</p>
+              <p class="text-3xl font-serif font-bold mb-6">I'm Louis <span class="animate-wave">👋</span></p>
+            </div>
+            <p class="hidden md:block text-3xl font-serif font-bold mb-6">Hello there, I'm Louis
+              <span class="animate-wave">👋</span>
+            </p>
+            <p class="mb-4">
+              Hi, I'm Louis Delloye, a Paris-based photographer with a PhD in optics that I put to good use. While I have a
+              soft spot for capturing the city's diverse architecture, I also venture into street photography, portraits, and
+              landscapes.
+            </p>
+            <p class="mb-4">
+              I'm a fan of both analog and digital photography. The tactile joy of developing film and the endless creative
+              freedom of digital editing keep me hooked to this art form.
+            </p>
+            <p>
+              Thanks for stopping by to get to know me a bit. If my style resonates with you or you're curious to see more,
+              don't hesitate to reach out. Let's create something eye-catching and memorable!
+            </p>
+          </div>
+        </div>
+      </section>
+    </div> -->
+
+    <!-- Extra spacing between top section and statement -->
+    <div class="mt-12"></div>
+
+    <!-- Artist statement (EN/FR) - subtle + lean -->
+    <section class="mt-2">
+      <div class="bilingual-grid">
+        <!-- English -->
+        <div>
+          <h2 class="statement-title text-3xl md:text-4xl">A Window onto the Imaginary</h2>
+          <p class="statement-subtitle text-lg md:text-xl text-gray-800 dark:text-gray-300">My photography — artist’s statement</p>
+
+          <div class="space-y-5 text-base md:text-lg text-gray-900 dark:text-gray-300 leading-relaxed">
+            <p>In an overconnected world where our attention is captured by the panes of glass we hold in our hands, one thing still escapes—at least for now—these accumulations of rare earths: imagination. Through photography, my head lifts and my eyes once again look outward, with intensity. The pane that opens before me is no longer that of my smartphone, reflecting my own image back at me, but that of an imaginary world—one that simply requires learning how to perceive it.</p><br>
+            <p>I discovered this imaginary world through the practice of parkour, a discipline that transcends the original functions and conventional interpretations of obstacles. From that moment on, my gaze was equipped with new filters. Benches became hurdles, walls turned into steps, and the ground into a trampoline. Architecture gradually took center stage in my photographs as I began to look upward and capture traces that détourne the urban environment and its structures. To introduce disorder into an ordered world. To summon imagination within the reassuring harmony of straight lines. This dynamic that inhabits my images reflects the duality of my personality: on one side, a wild, unruly streak I consciously cultivate—shaped by the artistic, creative, productive, and manual environment in which I grew up; on the other, a scientific and logical mind, fulfilled through my work as a researcher at the CNRS. Structured (sometimes), scattered (often).</p><br>
+            <p>I therefore systematically seek to capture scenes in such a way that they may venture into unintelligibility. I enjoy playing with perspectives, with spatial arrangements and three-dimensional compositions that are fundamentally challenged by their two-dimensional projection. A framework becomes texture—or perhaps atomic structure; entangled walls transform into an uninterrupted field of color. Losing all sense of scale and function, to the point of losing one’s footing. Deconstructing as thoroughly as possible in order to return to a raw material that the viewer can shape freely.</p><br>
+            <p>Armed with this raw material, the viewer defines their own photographic subject in the future—through observation, retrospectively implementing it within the image itself. For this to occur, the process requires a canvas sufficiently blank to allow such a blossoming. In this sense, and in the spirit of the New Topographics, my images are often devoid of any readily identifiable subject. Moreover, the very idea of imaginative freedom presupposes a space in which to operate. This space is primarily conveyed in my photographs through a deliberately pared-down approach—whether in color, light, framing, or other compositional elements.</p><br>
+            <p>By fixing a transposition of my retina onto gelatin or semiconductors, I evoke where my mind wanders and the paths it has taken. Through this gesture, I hope to initiate the genesis of new possible interpretations within the viewer. To my mind, the raw material I manipulate is none other than the viewer’s own grey matter. I therefore feel that my photographs offer a regard—in the architectural sense—into my imagination, while simultaneously granting me access to that of the beholder. My images of windows represent the culmination of this exchange. Through my work, I invite the viewer to let their gaze drift into their own imagination, through my windows.</p>
           </div>
         </div>
 
-      </div>
-      <section class="font-normal text-center text-base md:text-start mx-3 col-span-2 md:col-span-1 my-auto">
-        <div class="block md:hidden">
-          <p class="text-3xl font-serif font-bold mb-1">Hello there,</p>
-          <p class="text-3xl font-serif font-bold mb-6">I'm Louis <span class="animate-wave">👋</span></p>
+        <!-- French -->
+        <div>
+          <h2 class="statement-title text-3xl md:text-4xl">Une fenêtre vers son imaginaire</h2>
+          <p class="statement-subtitle text-lg md:text-xl text-gray-800 dark:text-gray-300">Ma photographie — note d’intention</p>
+
+          <div class="space-y-5 text-base md:text-lg text-gray-900 dark:text-gray-300 leading-relaxed">
+            <p>Dans un monde sur-connecté où notre attention est captivée par les vitres que nous tenons entre nos mains, une chose échappe, pour l’instant, à ces ramassis de terre-rares : L’imagination. Grâce à la photographie, ma tête se relève et mes yeux regardent à nouveau au loin, avec passion. La vitre qui s’ouvre à moi n’est plus celle de mon smartphone qui me renvoie ma propre image, mais celle d’un monde imaginaire qu’il suffit de savoir déceler.</p><br>
+            <p>Ce monde imaginaire, je l’ai découvert grâce à la pratique du parkour, une discipline sportive qui transcende les usages et conceptions initiales des obstacles rencontrés. Mes yeux se sont dès lors équipés de nouveaux filtres. Les bancs sont devenus des haies, les murs des marches et le sol un trampoline. L’architecture s’est installée au cœur de mes photographies à mesure que je m’amusais à regarder au-dessus de moi et à capturer ces traces détournant le milieu urbain et son architecture. Provoquer le désordre dans un monde ordonné. Invoquer l’imaginaire dans l’harmonie rassurante des lignes droites. Cette dynamique qui habite mes clichés résume bien la dualité de ma personnalité. D’un côté, cette fibre hirsute que je cultive, héritée de l’environnement artistique, créatif, productif et manuel dans lequel j’ai grandi. De l’autre, mon esprit scientifique et logique, qui s’épanouie dans mon travail de chercheur au CNRS. Structuré (parfois), dispersé (souvent).</p><br>
+            <p>Je cherche donc systématiquement à capturer les scènes de sorte à ce qu’elles puissent s’aventurer dans l’inintelligibilité. J’aime jouer avec les perspectives, les arrangements et agencements tridimensionnels que la projection bidimensionnelle remet fondamentalement en question. Une charpente devient texture voire structure atomique qui sait, des murs enchevêtrés se métamorphosent en un aplat de couleurs ininterrompu. Perdre la notion d’échelle et d’usage à en perdre les pieds sur terre. Déconstruire le plus possible pour revenir à une matière première que l’observateur peut modeler à sa guise.</p><br>
+            <p>Muni de cette matière première, l’observateur définit son propre sujet photographique dans le futur, lorsqu’il observe et l’implémente a posteriori à même la photographie observée. Pour ce faire, ce processus nécessite un canevas suffisamment vierge pour laisser place à cette floraison. Ainsi, à la manière des New Topographics, mes clichés sont souvent dépourvus de sujet aisément identifiable. Par ailleurs, l’idée même de liberté de création imaginaire implique un espace au sein duquel modeler. Cet espace est principalement dépeint au sein de mes photographies par un aspect (couleur, lumière, cadrage ou autre) très épuré.</p><br>
+            <p>Fixant une transposition de ma rétine sur de gélatine ou des semi-conducteurs, j’évoque où s’évade mon esprit, et quels chemins il a emprunté. J’espère par cela amorcer la genèse d’une nouvelle interprétation possible chez mon auditoire. A mon sens, cette matière première que je manipule n’est autre que la matière grise du spectateur. Ainsi, j’ai le sentiment que mes photographies offrent un regard (au sens architectural du terme) sur mon imaginaire et inversement m’en offrent un sur celui du regardant. Mes captures de fenêtres en étant l’apogée. A travers mon travail, j’invite le spectateur à laisser son regard se perdre dans son imaginaire au travers de mes fenêtres.</p>
+          </div>
         </div>
-        <p class="hidden md:block text-3xl font-serif font-bold mb-6">Hello there, I'm Louis
-          <span class="animate-wave">👋</span>
-        </p>
-        <p class="mb-4">
-          Hi, I'm Louis Delloye, a Paris-based photographer with a PhD in optics that I put to good use. While I have a soft spot for capturing the city's diverse architecture, I also venture into street photography, portraits, and landscapes. My style? Think bold and pastel colors, strong and soft contrasts, and often a geometric or abstract twist that shifts your perspective on everyday sights.
-        </p>
-        <p class="mb-4">
-          I'm a fan of both analog and digital photography. The tactile joy of developing film and the endless creative freedom of digital editing keep me hooked to this art form.
-        </p>
-        <p>
-          Thanks for stopping by to get to know me a bit. If my style resonates with you or you're curious to see more, don't hesitate to reach out. Let's create something eye-catching and memorable!
-        </p>
-      </section>
-    </div>
+      </div>
+    </section>
   </div>
+
   <!-- Footer -->
   <footer>
     <div class="max-w-screen-xl py-16 mx-auto">
@@ -121,21 +211,15 @@
           <p class="mt-4 text-sm text-gray-600 dark:text-gray-300">
             Paris<br />France
           </p>
+
           <div class="flex mx-auto">
             <div class="mx-auto mt-8">
               <img src="assets/qr-code.svg" alt="qr-code" width="100">
             </div>
           </div>
+
           <div class="flex mx-auto">
             <div class="mx-auto space-x-6 flex mt-8 text-gray-600 dark:text-gray-300">
-              <!-- <a class="transition duration-300 hover:opacity-75" href="https://www.facebook.com" target="_blank"
-                rel="noreferrer">
-                <span class="sr-only"> Facebook </span>
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                  <path
-                    d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
-                </svg>
-              </a> -->
               <a class="transition duration-300 hover:opacity-75" href="https://www.instagram.com/lwi_inc" target="_blank"
                 rel="noreferrer">
                 <span class="sr-only"> Instagram </span>
@@ -144,36 +228,22 @@
                     d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
                 </svg>
               </a>
-              <!-- <a class="transition duration-300 hover:opacity-75" href="https://twitter.com" target="_blank"
-                rel="noreferrer">
-                <span class="sr-only"> Twitter </span>
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                  <path
-                    d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
-                </svg>
-              </a> -->
-              <a class="transition duration-300 hover:opacity-75" href="https://www.linkedin.com/in/louis-delloye-021744b1/?locale=en_US" target="_blank"
-                rel="noreferrer">
+
+              <a class="transition duration-300 hover:opacity-75"
+                href="https://www.linkedin.com/in/louis-delloye-021744b1/?locale=en_US" target="_blank" rel="noreferrer">
                 <span class="sr-only">LinkedIn</span>
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
                   <path
                     d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
                 </svg>
               </a>
-              <!-- <a class="transition duration-300 hover:opacity-75" href="https://www.behance.net" target="_blank"
-                rel="noreferrer">
-                <span class="sr-only">Behance</span>
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                  <path
-                    d="M4.654 3c.461 0 .887.035 1.278.14.39.07.711.216.996.391.286.176.497.426.641.747.14.32.216.711.216 1.137 0 .496-.106.922-.356 1.242-.215.32-.566.606-.997.817.606.176 1.067.496 1.348.922.281.426.461.957.461 1.563 0 .496-.105.922-.285 1.278a2.317 2.317 0 0 1-.782.887c-.32.215-.711.39-1.137.496a5.329 5.329 0 0 1-1.278.176L0 12.803V3h4.654zm-.285 3.978c.39 0 .71-.105.957-.285.246-.18.355-.497.355-.887 0-.216-.035-.426-.105-.567a.981.981 0 0 0-.32-.355 1.84 1.84 0 0 0-.461-.176c-.176-.035-.356-.035-.567-.035H2.17v2.31c0-.005 2.2-.005 2.2-.005zm.105 4.193c.215 0 .426-.035.606-.07.176-.035.356-.106.496-.216s.25-.215.356-.39c.07-.176.14-.391.14-.641 0-.496-.14-.852-.426-1.102-.285-.215-.676-.32-1.137-.32H2.17v2.734h2.305v.005zm6.858-.035c.286.285.711.426 1.278.426.39 0 .746-.106 1.032-.286.285-.215.46-.426.53-.64h1.74c-.286.851-.712 1.457-1.278 1.848-.566.355-1.243.566-2.06.566a4.135 4.135 0 0 1-1.527-.285 2.827 2.827 0 0 1-1.137-.782 2.851 2.851 0 0 1-.712-1.172c-.175-.461-.25-.957-.25-1.528 0-.531.07-1.032.25-1.493.18-.46.426-.852.747-1.207.32-.32.711-.606 1.137-.782a4.018 4.018 0 0 1 1.493-.285c.606 0 1.137.105 1.598.355.46.25.817.532 1.102.958.285.39.496.851.641 1.348.07.496.105.996.07 1.563h-5.15c0 .58.21 1.11.496 1.396zm2.24-3.732c-.25-.25-.642-.391-1.103-.391-.32 0-.566.07-.781.176-.215.105-.356.25-.496.39a.957.957 0 0 0-.25.497c-.036.175-.07.32-.07.46h3.196c-.07-.526-.25-.882-.497-1.132zm-3.127-3.728h3.978v.957h-3.978v-.957z" />
-                </svg>
-              </a> -->
             </div>
           </div>
         </div>
       </div>
     </div>
   </footer>
+
   <script src="fade_in.js"></script>
   <script src="menu.js"></script>
 </body>

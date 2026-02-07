@@ -11,7 +11,6 @@
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="./assets/favicon.svg" />
   <link rel="stylesheet" href="output.css" />
-  <link rel="stylesheet" href="styles.css" />
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <!-- Start - Fonts -->
@@ -22,13 +21,54 @@
   <!-- Start - Fancybox Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
-  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
-    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
   <!-- End - Fancybox Scripts -->
+  <style>
+    /* Fallback fade-in (in case styles.css is missing / not served as CSS) */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    /* Masonry-like layout using CSS columns (works with mixed aspect ratios) */
+    #gallery.masonry {
+      column-count: 1;
+      column-gap: 0.5rem;
+    }
+
+    @media (min-width: 640px) {
+      #gallery.masonry { column-count: 2; }
+    }
+
+    @media (min-width: 1024px) {
+      #gallery.masonry { column-count: 3; }
+    }
+
+    .masonry-item {
+      break-inside: avoid;
+      margin: 0 0 0.5rem 0;
+      width: 100%;
+    }
+
+    .masonry-item a {
+      display: block;
+      overflow: hidden;
+      border-radius: 0.25rem;
+    }
+
+    .masonry-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
 </head>
 
 <body
-  class="dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
+  class="dark:bg-black bg-white min-h-screen text-black dark:text-white px-5 md:px-20 animate-fade-in transition duration-500">
   <!-- Navbar -->
   <header class="flex w-full overflow-hidden pt-10 pb-1">
     <!-- Navbar -->
@@ -65,7 +105,13 @@
               </a>
             </li>
             <li class="group transition duration-300">
-              <a href="about_me.html" class="font-signika text-2xl tap-highlight-transparent">ABOUT ME
+              <a href="https://louisdelloye.github.io/art-gallery/build" class="font-signika text-2xl tap-highlight-transparent">3D EXHIBITION
+                <span
+                  class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+              </a>
+            </li>
+            <li class="group transition duration-300">
+              <a href="about_me.html" class="font-signika text-2xl tap-highlight-transparent">ABOUT
                 <span
                   class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
               </a>
@@ -84,180 +130,13 @@
   <!-- Content -->
   <div class="container mx-auto">
     <h1 class="text-4xl pt-10 pb-8 font-bold">PORTFOLIO</h1>
+    <!-- Dynamic gallery (auto-lists assets/imgs via GitHub API) -->
     <section class="text-neutral-700">
       <div class="container w-full">
-        <div class="flex flex-wrap w-full">
-          <div class="flex w-full md:w-1/2 flex-wrap">
-            <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="assets/imgs/diag_grid_pink.jpg"
-                  data-fancybox="gallery">
-                  <img alt="a person standing in front of a rock formation"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/imgs/diag_grid_pink.jpg" />
-                </a>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="assets/imgs/house_pt.jpg"
-                  data-fancybox="gallery">
-                  <img alt="a cat laying on top of a sidewalk next to the ocean"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/imgs/house_pt.jpg" />
-                </a>
-              </div>
-            </div>
-            <div class="w-full p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="assets/imgs/grey_pink_titl.jpeg"
-                  data-fancybox="gallery">
-                  <img alt="a man standing on a beach next to the ocean"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/imgs/grey_pink_titl.jpeg" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="flex w-full md:w-1/2 flex-wrap">
-            <div class="w-full p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="assets/imgs/pumpkin.jpeg"
-                  data-fancybox="gallery">
-                  <img alt="a snow covered mountain with trees on the side"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/imgs/pumpkin.jpeg" />
-                </a>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="assets/imgs/stairs.jpeg"
-                  data-fancybox="gallery">
-                  <img alt="a branch of a plant floating in a body of water"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/imgs/stairs.jpeg" />
-                </a>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="assets/imgs/stairs_cloud.jpeg"
-                  data-fancybox="gallery">
-                  <img alt="a blue sky with a lot of red and orange clouds"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/imgs/stairs_cloud.jpeg" />
-                </a>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="assets/imgs/dancing_pendulum.jpeg"
-                  data-fancybox="gallery">
-                  <img alt="a view of the ocean from the top of a hill"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/imgs/dancing_pendulum.jpeg" />
-                </a>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="assets/imgs/40.jpg"
-                  data-fancybox="gallery">
-                  <img alt="a pheasant flying in the sky with its wings spread"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/imgs/40.jpg" />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="flex w-full md:w-1/2 flex-wrap">
-            <div class="w-full p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="assets/imgs/red_cord.jpg"
-                  data-fancybox="gallery">
-                  <img alt="a statue of a man next to a statue of a woman"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/imgs/red_cord.jpg" />
-                </a>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="assets/imgs/poles.jpg"
-                  data-fancybox="gallery">
-                  <img alt="a city street with tall buildings in the background"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/imgs/poles.jpg" />
-                </a>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="assets/imgs/man_phone.jpeg"
-                  data-fancybox="gallery">
-                  <img alt="25 de abril bridge spanning over Tagus river"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/imgs/man_phone.jpeg" />
-                </a>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="assets/imgs/bicolor_GB.jpg"
-                  data-fancybox="gallery">
-                  <img alt="a lot of lanterns floating in the air at night"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/imgs/bicolor_GB.jpg" />
-                </a>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="assets/imgs/diverging_roads.jpeg"
-                  data-fancybox="gallery">
-                  <img alt="a flock of seaguls flying over a body of water"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/imgs/diverging_roads.jpeg" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="flex w-full md:w-1/2 flex-wrap">
-            <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="assets/imgs/sf_2towers.jpg"
-                  data-fancybox="gallery">
-                  <img alt="a statue of a headless angel"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/imgs/sf_2towers.jpg" />
-                </a>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="assets/imgs/inverted_tree.jpg"
-                  data-fancybox="gallery">
-                  <img alt="Monument to the Discoveries viewed from top to bottom"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/imgs/inverted_tree.jpg" />
-                </a>
-              </div>
-            </div>
-            <div class="w-full p-1">
-              <div class="overflow-hidden h-full w-full">
-                <a href="assets/imgs/IR.jpg"
-                  data-fancybox="gallery">
-                  <img
-                    alt="a group of people walking along the museum of art, architecture and technology of lisbon next to the Tagus river"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/imgs/IR.jpg" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div id="gallery" class="masonry"></div>
+        <noscript>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-4">Enable JavaScript to load the gallery.</p>
+        </noscript>
       </div>
     </section>
   </div>
@@ -324,9 +203,206 @@
       </div>
     </div>
   </footer>
-  <!-- Script for the LightBox -->
+  <!-- Dynamic gallery loader (GitHub Pages friendly) -->
   <script>
-    Fancybox.bind("[data-fancybox]", {});
+    (function () {
+      const GALLERY_ID = "gallery";
+      const IMAGES_DIR = "assets/imgs";
+      const ALLOWED_EXT = new Set(["jpg", "jpeg", "png", "webp", "gif", "avif"]);
+
+      function getGithubRepoInfo() {
+        // Works for user/organization GitHub Pages like https://<user>.github.io/
+        // Repo defaults to <user>.github.io
+        const host = window.location.hostname || "";
+        const user = host.split(".")[0];
+        const repo = `${user}.github.io`;
+        return { user, repo };
+      }
+
+      function isLikelyGithubPages() {
+        return (window.location.hostname || "").endsWith("github.io");
+      }
+
+      function ext(name) {
+        const i = name.lastIndexOf(".");
+        return i === -1 ? "" : name.slice(i + 1).toLowerCase();
+      }
+
+      function naturalCompare(a, b) {
+        return a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" });
+      }
+
+      async function listImages() {
+        // 3-tier strategy:
+        // 1) Try to read a directory listing from the origin (works on many local servers).
+        // 2) If on github.io, use GitHub Contents API.
+        // 3) Otherwise, fall back to a manifest (optional).
+
+        // 1) Try directory listing first (best for local dev servers)
+        try {
+          const listingUrl = `${IMAGES_DIR}/`;
+          const res = await fetch(listingUrl, { cache: "no-store" });
+          if (res.ok) {
+            const html = await res.text();
+            // Parse links in directory index pages
+            const doc = new DOMParser().parseFromString(html, "text/html");
+            const hrefs = Array.from(doc.querySelectorAll("a"))
+              .map((a) => (a.getAttribute("href") || "").trim())
+              .filter(Boolean)
+              // remove parent/self links
+              .filter((h) => h !== "../" && h !== "./" && h !== "/")
+              // normalize: directory listings may include querystrings
+              .map((h) => h.split("?")[0].split("#")[0]);
+
+            // Keep only allowed image files
+            const names = hrefs
+              .map((h) => decodeURIComponent(h))
+              // directory listings may return absolute paths or just filenames
+              .map((h) => h.replace(/^.*\//, ""))
+              .filter((name) => ALLOWED_EXT.has(ext(name)));
+
+            if (names.length > 0) {
+              return names
+                .map((name) => ({ name, url: `${IMAGES_DIR}/${name}` }))
+                .sort((a, b) => naturalCompare(a.name, b.name));
+            }
+          }
+        } catch (_) {
+          // ignore and try next strategy
+        }
+
+        // 2) GitHub Pages strategy
+        if (isLikelyGithubPages()) {
+          const { user, repo } = getGithubRepoInfo();
+          if (!user) throw new Error("Could not infer GitHub user from hostname.");
+
+          const apiUrl = `https://api.github.com/repos/${user}/${repo}/contents/${IMAGES_DIR}`;
+          const res = await fetch(apiUrl, {
+            headers: {
+              "Accept": "application/vnd.github+json"
+            }
+          });
+          if (!res.ok) {
+            throw new Error(`GitHub API error (${res.status}).`);
+          }
+          const items = await res.json();
+          if (!Array.isArray(items)) {
+            throw new Error("Unexpected GitHub API response.");
+          }
+
+          const images = items
+            .filter((it) => it && it.type === "file" && ALLOWED_EXT.has(ext(it.name)))
+            .map((it) => ({
+              name: it.name,
+              url: `${IMAGES_DIR}/${it.name}`
+            }))
+            .sort((a, b) => naturalCompare(a.name, b.name));
+
+          return images;
+        }
+
+        // 3) Optional manifest fallback
+        try {
+          const manifestUrl = `${IMAGES_DIR}/images.json`;
+          const res = await fetch(manifestUrl, { cache: "no-store" });
+          if (res.ok) {
+            const names = await res.json();
+            if (Array.isArray(names) && names.length > 0) {
+              return names
+                .filter((name) => typeof name === "string" && ALLOWED_EXT.has(ext(name)))
+                .map((name) => ({ name, url: `${IMAGES_DIR}/${name}` }))
+                .sort((a, b) => naturalCompare(a.name, b.name));
+            }
+          }
+        } catch (_) {
+          // ignore
+        }
+
+        // If we get here, we couldn't enumerate files.
+        // This happens when you open the HTML directly (file://) or your server doesn't expose directory listings.
+        throw new Error(
+          "Cannot enumerate images in assets/imgs from the browser. If you're testing locally, run a local web server that exposes a directory listing for assets/imgs (or provide assets/imgs/images.json as a fallback)."
+        );
+      }
+
+      function renderImages(images) {
+        const container = document.getElementById(GALLERY_ID);
+        if (!container) return;
+
+        container.innerHTML = "";
+
+        const frag = document.createDocumentFragment();
+
+        images.forEach((img) => {
+          const wrap = document.createElement("div");
+          wrap.className = "masonry-item";
+
+          const a = document.createElement("a");
+          a.href = img.url;
+          a.setAttribute("data-fancybox", "gallery");
+
+          const im = document.createElement("img");
+          im.src = img.url;
+          im.alt = img.name;
+          im.loading = "lazy";
+          // Start hidden, then reveal on load using Tailwind opacity utilities.
+          // This avoids relying on a custom `animate-fade-in` class which may not be defined for images.
+          im.className = "block w-full object-cover object-center transition duration-500 transform scale-100 hover:scale-110 opacity-0";
+
+          im.addEventListener("load", () => {
+            im.classList.remove("opacity-0");
+            im.classList.add("opacity-100");
+          });
+
+          // If the image is already cached, the load event may not fire in some cases.
+          // Force a microtask to apply the visible state when complete.
+          queueMicrotask(() => {
+            if (im.complete && im.naturalWidth > 0) {
+              im.classList.remove("opacity-0");
+              im.classList.add("opacity-100");
+            }
+          });
+
+          a.appendChild(im);
+          wrap.appendChild(a);
+          frag.appendChild(wrap);
+        });
+
+        container.appendChild(frag);
+        // Reveal any images that were instantly loaded from cache
+        container.querySelectorAll("img").forEach((im) => {
+          if (im.complete && im.naturalWidth > 0) {
+            im.classList.remove("opacity-0");
+            im.classList.add("opacity-100");
+          }
+        });
+
+        // Bind Fancybox after DOM insertion
+        if (window.Fancybox && typeof window.Fancybox.bind === "function") {
+          window.Fancybox.bind("[data-fancybox]", {});
+        }
+      }
+
+      function renderError(err) {
+        const container = document.getElementById(GALLERY_ID);
+        if (!container) return;
+        container.innerHTML = `
+          <div class="text-sm text-gray-600 dark:text-gray-300 mt-4">
+            Could not auto-load images. ${String(err && err.message ? err.message : err)}
+            <br/>If you're testing locally, make sure you're running a local web server (not opening the file directly) and that it exposes a directory listing for <code>${IMAGES_DIR}/</code>. A <code>${IMAGES_DIR}/images.json</code> manifest is only an optional fallback.
+          </div>
+        `;
+      }
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        try {
+          const images = await listImages();
+          renderImages(images);
+        } catch (e) {
+          renderError(e);
+        }
+      });
+    })();
   </script>
   <script src="fade_in.js"></script>
   <script src="menu.js"></script>
