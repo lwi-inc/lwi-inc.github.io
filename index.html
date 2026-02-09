@@ -242,43 +242,33 @@
           a.className = "card";
           a.href = safeUrl(it.file);
 
-          // Fancybox hooks
+          // Fancybox hook (NO caption)
           a.dataset.fancybox = "gallery";
-          if (it.title) a.dataset.caption = it.title;
 
           const img = document.createElement("img");
           img.src = safeUrl(it.file);
-          img.alt = it.title || "";
+          img.alt = "";               // optional: empty alt if you want zero text
           img.loading = "lazy";
           img.decoding = "async";
 
           a.appendChild(img);
-
-          if (it.title) {
-            const cap = document.createElement("div");
-            cap.className = "caption";
-            cap.textContent = it.title;
-            a.appendChild(cap);
-          }
-
           wrap.appendChild(a);
           frag.appendChild(wrap);
         });
 
         gallery.appendChild(frag);
 
-        // IMPORTANT: (re)bind Fancybox after dynamic DOM creation
         Fancybox.bind('[data-fancybox="gallery"]', {
           animated: true,
           dragToClose: true,
           closeButton: "top",
-          idle: false,             // keep UI visible
+          idle: false,
           placeFocusBack: true,
           Thumbs: { autoStart: false },
           Toolbar: {
             display: {
               left: [],
-              middle: ["infobar"],
+              middle: [],
               right: ["close"]
             }
           }
