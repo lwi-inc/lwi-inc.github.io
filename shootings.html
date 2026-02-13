@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Louis Delloye - Portfolio</title>
-  <meta name="description" content="Louis Delloye — portfolio." />
+  <title>Louis Delloye - Shootings</title>
+  <meta name="description" content="Louis Delloye — shootings portfolio." />
 
   <link rel="icon" type="image/x-icon" href="./assets/favicon.svg" />
 
@@ -132,12 +132,12 @@
             class="flex flex-col duration-300 ease-out md:space-x-5 sm:transition-none mt-5 md:flex-row md:items-center md:ml-auto md:mt-0 md:pt-0 md:border-0">
             <li class="group transition duration-300">
               <a href="index.html" class="font-signika text-2xl">PORTFOLIO
-                <span class="hidden md:block h-0.5 bg-black dark:bg-white"></span>
+                <span class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
               </a>
             </li>
             <li class="group transition duration-300">
               <a href="shootings.html" class="font-signika text-2xl">SHOOTINGS
-                <span class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+                <span class="hidden md:block h-0.5 bg-black dark:bg-white"></span>
               </a>
             </li>
             <li class="group transition duration-300">
@@ -157,7 +157,7 @@
   </header>
 
   <main class="container mx-auto">
-    <h1 class="text-4xl pt-10 pb-8"><b>PORTFOLIO</b></h1>
+    <h1 class="text-4xl pt-10 pb-8"><b>SHOOTINGS</b></h1>
 
     <section aria-label="Gallery">
       <div id="gallery" class="masonry"></div>
@@ -213,8 +213,8 @@
 
   <script>
     (function () {
-      const JSON_URL = "./assets/imgs/images.json";
-      const IMG_BASE = "./assets/imgs/";
+      const JSON_URL = "./assets/imgs-shootings/images.json";
+      const IMG_BASE = "./assets/imgs-shootings/";
 
       const gallery = document.getElementById("gallery");
       const err = document.getElementById("galleryError");
@@ -288,7 +288,7 @@
           data = await res.json();
         } catch (e) {
           console.error(e);
-          showError("Could not load images.json. Make sure it exists at assets/imgs/images.json on GitHub Pages.");
+          showError("Could not load images.json. Make sure it exists at assets/imgs-shootings/images.json on GitHub Pages.");
           return;
         }
 
