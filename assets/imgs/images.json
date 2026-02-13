@@ -1,6 +1,10 @@
 {
     "images": [
         {
+            "title": "",
+            "file": ".DS_Store"
+        },
+        {
             "title": "1_Dancing_Silhouettes_1 Large",
             "file": "1_Dancing_Silhouettes_1 Large.jpeg"
         },
@@ -33,8 +37,52 @@
             "file": "2_Hitchcock10 Large.jpeg"
         },
         {
+            "title": "2_Hitchcock11 Large",
+            "file": "2_Hitchcock11 Large.jpeg"
+        },
+        {
+            "title": "2_Hitchcock12 Large",
+            "file": "2_Hitchcock12 Large.jpeg"
+        },
+        {
+            "title": "2_Hitchcock13 Large",
+            "file": "2_Hitchcock13 Large.jpeg"
+        },
+        {
+            "title": "2_Hitchcock14 Large",
+            "file": "2_Hitchcock14 Large.jpeg"
+        },
+        {
+            "title": "2_Hitchcock15 Large",
+            "file": "2_Hitchcock15 Large.jpeg"
+        },
+        {
+            "title": "2_Hitchcock16 Large",
+            "file": "2_Hitchcock16 Large.jpeg"
+        },
+        {
+            "title": "2_Hitchcock17 Large",
+            "file": "2_Hitchcock17 Large.jpeg"
+        },
+        {
+            "title": "2_Hitchcock18 Large",
+            "file": "2_Hitchcock18 Large.jpeg"
+        },
+        {
+            "title": "2_Hitchcock19 Large",
+            "file": "2_Hitchcock19 Large.jpeg"
+        },
+        {
             "title": "2_Hitchcock2 Large",
             "file": "2_Hitchcock2 Large.jpeg"
+        },
+        {
+            "title": "2_Hitchcock20 Large",
+            "file": "2_Hitchcock20 Large.jpeg"
+        },
+        {
+            "title": "2_Hitchcock21 Large",
+            "file": "2_Hitchcock21 Large.jpeg"
         },
         {
             "title": "2_Hitchcock3 Large",
@@ -97,6 +145,14 @@
             "file": "3_Lines16 Large.jpeg"
         },
         {
+            "title": "3_Lines17 Large",
+            "file": "3_Lines17 Large.jpeg"
+        },
+        {
+            "title": "3_Lines18 Large",
+            "file": "3_Lines18 Large.jpeg"
+        },
+        {
             "title": "3_Lines2 Large",
             "file": "3_Lines2 Large.jpeg"
         },
@@ -129,6 +185,14 @@
             "file": "4_Colors1 Large.jpeg"
         },
         {
+            "title": "4_Colors10 Large",
+            "file": "4_Colors10 Large.jpeg"
+        },
+        {
+            "title": "4_Colors11 Large",
+            "file": "4_Colors11 Large.jpeg"
+        },
+        {
             "title": "4_Colors2 Large",
             "file": "4_Colors2 Large.jpeg"
         },
@@ -147,6 +211,14 @@
         {
             "title": "4_Colors7 Large",
             "file": "4_Colors7 Large.jpeg"
+        },
+        {
+            "title": "4_Colors8 Large",
+            "file": "4_Colors8 Large.jpeg"
+        },
+        {
+            "title": "4_Colors9 Large",
+            "file": "4_Colors9 Large.jpeg"
         },
         {
             "title": "5_Faded1 Large",
@@ -271,6 +343,30 @@
         {
             "title": "6_Outerwilds30 Large",
             "file": "6_Outerwilds30 Large.jpeg"
+        },
+        {
+            "title": "6_Outerwilds31 Large",
+            "file": "6_Outerwilds31 Large.jpeg"
+        },
+        {
+            "title": "6_Outerwilds32 Large",
+            "file": "6_Outerwilds32 Large.jpeg"
+        },
+        {
+            "title": "6_Outerwilds33 Large",
+            "file": "6_Outerwilds33 Large.jpeg"
+        },
+        {
+            "title": "6_Outerwilds34 Large",
+            "file": "6_Outerwilds34 Large.jpeg"
+        },
+        {
+            "title": "6_Outerwilds35 Large",
+            "file": "6_Outerwilds35 Large.jpeg"
+        },
+        {
+            "title": "6_Outerwilds36 Large",
+            "file": "6_Outerwilds36 Large.jpeg"
         },
         {
             "title": "6_Outerwilds4 Large",
